@@ -1,13 +1,13 @@
 package com.johnymuffin.beta.discordchatbridge;
 
 import com.johnymuffin.beta.discordauth.DiscordAuthentication;
-import com.johnymuffin.jperms.beta.JohnyPerms;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 import java.awt.*;
 import java.util.Objects;
@@ -143,20 +143,19 @@ public class DCBDiscordListener extends ListenerAdapter {
             }
 
             //Check for prefix
-            if (this.plugin.getConfig().getConfigBoolean("johnyperms-prefix-support.enabled")) {
+            if (this.plugin.getConfig().getConfigBoolean("pex-prefix-support.enabled")) {
                 if (playerUUID != null) {
-                    if(Bukkit.getPluginManager().isPluginEnabled("JPerms")) {
-                        JohnyPerms jperms = (JohnyPerms) Bukkit.getServer().getPluginManager().getPlugin("JPerms");
-                        //Attempt to get prefix from JohnyPerms for user then group
-                        prefix = jperms.getUser(playerUUID).getPrefix();
+                    if(Bukkit.getPluginManager().isPluginEnabled("PermissionsEx")) {
+                        //Attempt to get prefix from PEX for user then group
+                        prefix = PermissionsEx.getPermissionManager().getUser(playerUUID).getPrefix();
                         if(prefix == null) {
-                            prefix = jperms.getUser(playerUUID).getGroup().getPrefix();
+                            prefix = PermissionsEx.getPermissionManager().getUser(playerUUID).getGroups()[0].getPrefix();
                         }
                     } else {
-                        this.plugin.logger(Level.WARNING, "JohnyPerms prefix support is enabled but the plugin is not installed or enabled.");
+                        this.plugin.logger(Level.WARNING, "PermissionsEx prefix support is enabled but the plugin is not installed or enabled.");
                     }
                 } else {
-                    this.plugin.logger(Level.WARNING, "JohnyPerms prefix support is enabled but the player UUID is null. This is likely due to the DiscordAuthentication plugin not being installed or enabled.");
+                    this.plugin.logger(Level.WARNING, "PermissionsEx prefix support is enabled but the player UUID is null. This is likely due to the DiscordAuthentication plugin not being installed or enabled.");
                 }
             }
 

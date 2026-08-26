@@ -1,17 +1,17 @@
 # Discord-Bot-Chatbridge
-A Discord Chat Bridge that uses https://github.com/RhysB/Discord-Bot-Core
+A Discord Chat Bridge that uses https://github.com/retromcorg/DiscordCore-4
 
 
 ## Libraries (Name and URL)
 
-1. **Discord Bot Core**
-    - GitHub: [https://github.com/RhysB/Discord-Bot-Core](https://github.com/RhysB/Discord-Bot-Core)
+1. **DiscordCore-4**
+    - GitHub: https://github.com/retromcorg/DiscordCore-4
 
-2. **Project Poseidon**
-    - GitHub: [https://github.com/RhysB/Project-Poseidon](https://github.com/RhysB/Project-Poseidon)
+2. **Project Poseidon V2**
+    - GitHub: https://github.com/legacyminecraft/Project-Poseidon-V2
 
 # Setup
-1. Install Discord Bot Core (https://github.com/RhysB/Discord-Bot-Core)
+1. Install DiscordCore-4 (https://github.com/retromcorg/DiscordCore-4)
 2. Configure Bot Core with Token
 3. Install Discord-Bot-Chatbridge and configure Servername and Discord Channel ID
 
